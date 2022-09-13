@@ -14,7 +14,7 @@
 	}
 </style>
 
-<nav class="navbar" role="navigation" aria-label="main navigation" >
+<nav class="navbar" aria-label="main navigation" >
 	<div class="navbar-brand">
 		<a href="/" class="navbar-item">
 			<img src="logo.jpeg" alt="virus">
