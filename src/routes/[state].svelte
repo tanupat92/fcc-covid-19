@@ -1,5 +1,6 @@
 <script context="module">
     import stateNames from '../data/stateNames.js'; 
+    import requests from '../data/requests.js'; 
     export async function preload(page) {
         const state = page.params["state"] 
         if (stateNames.find(s => s.abbreviation === state) === undefined){
@@ -7,12 +8,13 @@
             return ; 
         }
         try{
-    
+            const stats = await requests.stateStats(state); 
+            return {state, stats};
         } catch (e) {
             this.error(500, "Error in calling API");
             return ; 
         }
-        return {state: page.params['state']};
+        
     }
 </script>
 
@@ -20,7 +22,8 @@
 import CovidChart from "../components/CovidChart.svelte";
 import CovidStat from "../components/CovidStat.svelte";
 
-    export let state; 
+export let state;
+export let stats;  
 </script>
 
 <svelte:head>
@@ -34,5 +37,5 @@ import CovidStat from "../components/CovidStat.svelte";
 </div>
 
 
-<CovidStat />
+<CovidStat usStats={stats} />
 <CovidChart />
