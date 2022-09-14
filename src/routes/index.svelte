@@ -2,11 +2,13 @@
     import requests from "../data/requests.js"; 
     export async function preload() {
         try {
+            //throw new Error('this is bad :(');
             const usStats = await requests.usStats();
             return {usStats}; 
         }
-        catch {
-            console.log("error..")
+        catch (e) {
+            this.error(500, "Error in calling API");
+            return  
         }
     }
 </script>
@@ -14,6 +16,7 @@
     import CovidStat from "../components/CovidStat.svelte";
     import CovidChart from "../components/CovidChart.svelte";
     import TableContainer from "../components/TableContainer.svelte";
+import Error from "./_error.svelte";
 
     export let usStats;
     console.log(usStats, "usStats"); 
@@ -28,6 +31,6 @@
         <h1 class="title">Covid 19 US</h1>
     </div>
 </div>
-<CovidStat />
+<CovidStat {usStats}/>
 <CovidChart />
 <TableContainer />
