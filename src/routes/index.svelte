@@ -4,9 +4,11 @@
         try {
             //throw new Error('this is bad :(');
             const usStats = await requests.usStats();
-            return {usStats}; 
+            const historicUS = await requests.historicUS(); 
+            return {usStats, historicUS}; 
         }
         catch (e) {
+            console.log(e);
             this.error(500, "Error in calling API");
             return  
         }
@@ -19,7 +21,8 @@
 import Error from "./_error.svelte";
 
     export let usStats;
-    console.log(usStats, "usStats"); 
+    export let historicUS; 
+    //console.log(historicUS);
 </script>
 
 <svelte:head>
