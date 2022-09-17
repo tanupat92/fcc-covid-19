@@ -27,9 +27,11 @@ function parseStats(rawStats){
 }
 function parseHistoric(historicData){
     return [
-        {label: 'Cases',
-         key: 'positive',
-         color: 'rgb(100,0,200)'},
+        {
+            label: 'Cases',
+            key: 'positive',
+            color: 'rgb(100,0,200)'
+        },
         {
             label: 'Recovered',
             key: 'recovered',
@@ -76,7 +78,7 @@ function parseChart(historicData, key, label, color){
         data: chartData,
         fill: false,
         borderColor: color 
-    }
+    };
 }
 
 export default {
