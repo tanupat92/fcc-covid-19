@@ -22,7 +22,7 @@ import Error from "./_error.svelte";
 
     export let usStats;
     export let historicUS; 
-    //console.log(historicUS);
+    console.log(historicUS);
 </script>
 
 <svelte:head>
@@ -35,5 +35,5 @@ import Error from "./_error.svelte";
     </div>
 </div>
 <CovidStat {usStats}/>
-<CovidChart />
+<CovidChart historicData={historicUS} title="US Covid-19" />
 <TableContainer />
