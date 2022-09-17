@@ -81,6 +81,12 @@ function parseChart(historicData, key, label, color){
     };
 }
 
+function historicState(state, data){
+    const stateHistoric = data.filter(d=> d.state === state); 
+    return parseHistoric(stateHistoric); 
+
+}
+
 export default {
-    usStats, stateStats, historicUS
+    usStats, stateStats, historicUS, historicState 
 }
